@@ -1,5 +1,5 @@
-#标题
-###collections中defaultdict：一种内置字典子类
+# 标题
+### collections中defaultdict：一种内置字典子类
 ```python
 from collections improt defaultdict
 # 使用list作为default_factory
@@ -21,7 +21,7 @@ d['b'] = 3
 
 print(d)  # 输出：defaultdict(<class 'int'>, {'a': 1, 'b': 3})
 ```
-###set()函数的用法：创建一个无序但不含重复元素的集合
+### set()函数的用法：创建一个无序但不含重复元素的集合
 ```python
 # 创建一个空的集合
 s = set()

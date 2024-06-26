@@ -284,6 +284,23 @@ reverse()
 for i in reversed(range(1, 3)):
     print(i)#2,1
 ```
+### 迭代器与生成器
+在Python中，迭代器是一个可以记住遍历的位置的对象。迭代器对象从集合的第一个元素开始访问，直到所有的元素被访问完结束。迭代器只能往前不会后退。
+
+在Python中，生成器是一种特殊的迭代器，它的特点是可以在运行时生成值，而不是一次性生成所有值并保存在内存中。这使得生成器在处理大规模数据时非常高效。
+```python
+def fibonacci():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b
+
+gen = fibonacci()
+for i in gen:
+    if i > 1000:
+        break
+    print(i, end=' ')# 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 
+```
 ## 数据结构及算法
 ### 栈(stack)和队列(queue)
 栈：后进先出
@@ -346,6 +363,28 @@ if num & 1:
 else:
     print("Even")
 ```
+### 位运算
+将二进制数第n位改为1或0
+```python
+num = 0b1001  # 二进制数 1001，十进制数 9
+n = 1  # 我们要将第1位改为1
+# 使用位运算符将第n位改为1
+num = num | (1 << n)
+print(bin(num))  # 输出：0b1011
+
+num = 0b1011  # 二进制数 1011，十进制数 11
+n = 1  # 我们要将第1位改为0
+# 使用位运算符将第n位改为0
+num = num & ~(1 << n)
+
+print(bin(num))  # 输出：0b1001
+```
+生成一个长度为n的全为1的二进制数
+```python
+n = 6
+mask = (1 << n) - 1
+print(bin(mask))# 0b111111
+```
 ### any()逻辑表达式
 ```python
 print(any([0, 1, 2]))  # 输出：True
@@ -374,7 +413,6 @@ heapq.heapify(nums)
 print(nums)#[-7, -3, -6, -1, -5, -3, -1]
 a = -heapq.heappop(nums)
 print(a)#7
-
 ```
 
 也可以以元组或列表为元素创建为堆，元组中第一个元素用于确定元组在堆中的位置
